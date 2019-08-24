@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Chapita v3</title>
+    
+    
+    
+    
+        <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      /* Learned some SCSS from cssTricks.com (codepen guys) */
+/*FACE RELATED*/
+/*SCSS varible because it was easy*/
+#face {
+  display: inline-block;
+  background-color: #FEE884;
+  
+  height: 20em;
+  width: 23em;
+  border-radius: 100%;
+  padding-top: 2em;
+}
+
+.eye {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  background: black;
+  border-radius: 100%;
+  margin: 0 4em;
+}
+.eye.happy {
+  box-shadow: inset 0 0.5em 0 0em black;
+  background: #FEE884;
+}
+.eye.sad#e1 {
+  border-top-left-radius: 200%;
+}
+.eye.sad#e2 {
+  border-top-right-radius: 200%;
+}
+
+#mouth {
+  width: 8em;
+  display: inline-block;
+  background: black;
+  margin: 1em 7em;
+  border-top-left-radius: 33%;
+  border-top-right-radius: 33%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+#mouth.rest {
+  height: 0.3em;
+}
+#mouth.sad {
+  border-bottom-left-radius: 33%;
+  border-bottom-right-radius: 33%;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+}
+#mouth.AIE {
+  height: 3em;
+}
+#mouth.L {
+  height: 2em;
+}
+#mouth.W {
+  border-radius: 100%;
+  height: 2em;
+  width: 4em;
+}
+#mouth.O {
+  border-radius: 100%;
+  height: 3em;
+  width: 5em;
+}
+
+/*JUST THE INFO and other style stuff*/
+body {
+  /*background-color: #faa25f; */
+  /*just because */
+  background: url(img/5Cr681S.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+
+  overflow-x: hidden;
+  font-family: monospace;
+  font-size: 16px;
+  margin: 0px;
+}
+
+#puts {
+  background-color: #444;
+  color: white;
+  margin-bottom: 1em;
+}
+
+#output {
+  /*just because */
+  min-height: 18px;
+}
+
+.Container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#info {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  color: white;
+  background: #444;
+  box-shadow: 0px 1px 3px black;
+  padding: 0.5em;
+  display: none;
+}
+#info:hover {
+  display: inline;
+}
+
+#q {
+  position: fixed;
+  color: white;
+}
+#q:hover ~ #info {
+  display: inline;
+}
+
+a {
+  color: #88f;
+  text-decoration: none;
+}
+
+input {
+  outline: none;
+  border: 0px;
+  padding: 2px;
+}
+
+    </style>
+<style>
+  .qr{ 
+   height:1px; 
+   font-size:10px; 
+   color:#ffffff; 
+   float:right; 
+   margin-top:0px;
+}
+</style>
+
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+
+<!--Chapita Bot-->
+
+<script src="js/deixibot.js"></script>
+<script src="js/aliziadata.js"></script>
+<!-- <script src="js/deixilog.js"></script> -->
+<script src="js/deixiui.js"></script>
+<script>
+var bot = new DeixiBot(botData);
+var botName = "Chapita";
+</script>
+<!--Fin Chapita -->
+
+
+  <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//analisis.videocliplp.com.ar/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+  
+  </head>
+
+  <body>
+
+    <span id="q">Bienvenido a Chapita v3.0</span><span id="info">Use emoticons like :) or :( or :|.<br />Use the symbols ~ , to pause for 400ms.<br />based on : <a href="http://deixilabs.com/alizia.html" target="_top">Alizia</a></span>
+
+<div class="Container">
+
+
+  <div id="puts">
+    <input id="textPelotita" placeholder="Write, hit enter. :D" type="hidden" /><br />
+    <div id="output"></div>
+  </div>
+
+
+  <div id="face">
+    <div id="eyes">
+      <div class="eye" id="e1"></div>
+      <div class="eye" id="e2"></div>
+    </div>
+    <div class="rest" id="mouth"></div>
+  </div>
+</div>
+
+
+
+<!-- el input q escucha y repite -->
+<link rel="stylesheet" href="speech-input.css">
+<style>
+.si-wrapper input {
+  font-size: 2em;
+  padding: .1em;
+}
+</style>
+
+<div class="contenedornegro" style="background-color:black;width:550px">
+  <br>
+<div class="si-wrapper">
+  <input type="text" class="si-input"   name="text" id="text" placeholder="What's up?">
+
+  <audio src="" hidden class="speech"></audio>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+
+  <button class="si-btn" id="si-btn">
+    speech input
+    <span class="si-mic"></span>
+    <span class="si-holder"></span>
+  </button>
+</div>
+
+
+<a href="#" class="say">Say it!</a>
+
+
+
+
+
+<table class="chatWindow">
+  <tbody><tr>
+    <td></td>
+    <td><textarea id="chatText"  rows="10" cols="57" readonly=""></textarea></td>
+  </tr>
+  <tr>
+    <td id="chatBotName"></td>
+    <td>
+    <form id="chatForm" onsubmit="chat(); return false;">
+      <input id="chatInput" type="text" size="49px">
+      <input id="chatSubmit" type="submit" hidefocus="true">
+    </form>
+    </td>
+  </tr>
+</tbody></table>
+</div>
+
+<div class="qr">
+  <img src="img/qr.png" alt="">
+</div>
+
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <!--pelotita -->
+    <script src="js/index.js"></script>
+
+
+
+
+<script src="speech-input.js"></script>
+<script>
+    $(function(){
+      $('a.say').on('click',function(e){  
+        e.preventDefault();
+
+        var text=$('input[name="text"]').val();
+
+
+        responsiveVoice.speak(text, 'Spanish Female', {pitch: 0.3, rate: 1.1}); 
+
+    
+      });
+    });
+
+
+    function habla() {  
+      var text=$('input[name="text"]').val();
+      if(text=="Hola"){
+        text="Hola Me llamo Chapita";
+      }
+        responsiveVoice.speak(text, 'Spanish Female', {pitch: 0.3, rate: 1.1}); 
+
+
+}
+
+    function habla(textbot) { 
+      var text=textbot;
+        responsiveVoice.speak(text, 'Spanish Female', {pitch: 0.3, rate: 1.1}); 
+
+
+}
+  </script>
+    
+    
+    
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://deixilabs.com/alizia.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>ALIZIA - ChatBot en Español - DeixiLabs</title>
+<link rel="stylesheet" href="js/deixibots.css">
+<script src="js/deixibot.js"></script>
+<script src="js/aliziadata.js"></script>
+<script src="js/deixilog.js"></script>
+<script src="js/deixiui.js"></script>
+<script>
+var bot = new DeixiBot(botData);
+var botName = "Chapita";
+</script>
+<style type="text/css"></style></head>
+
+<body>
+<div class="middlePane">
+<div id="title">
+	<h1>Chapita</h1>
+</div>
+<br>
+<table class="chatWindow">
+	<tbody><tr>
+		<td><img id="chatCam" src="js/alizia-1.png" alt="Alizia chatbot avatar"></td>
+		<td><textarea id="chatText" readonly=""></textarea></td>
+	</tr>
+	<tr>
+		<td id="chatBotName">Chapita</td>
+		<td>
+		<form id="chatForm" onsubmit="chat(); return false;">
+			<input id="chatInput" type="text">
+			<input id="chatSubmit" type="submit" hidefocus="true">
+		</form>
+		</td>
+	</tr>
+</tbody></table>
+<div id="options">
+	<a href="http://deixilabs.com/alizia.html#" onclick="reset()">reiniciar</a>
+
+</div>
+
+
+
+
+
+</div></body></html>
